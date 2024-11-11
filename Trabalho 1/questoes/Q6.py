@@ -27,36 +27,31 @@ for i in range(1, len(t_n)):
 # b) y[n] = (1 / 2M + 1) Σ de k = -M a M (x[n - k])], onde M < N ∈ N é o parâmetro que deve ser ajustado de modo
 # a “eliminar” o ruído presente no sinal.
 
-M = 50
-
-def somatorio(M, j):
-     soma = 0
-     for k in range(-M, j + 1):
-         dif = j - k
-         if dif < len(x_n):
-            soma += x_n[dif]
-        
-     return soma
-
+M = 20
+y_n2 = np.zeros(len(t_n))
 constante = 1 / (2 * M + 1)
-soma_0 = somatorio(M, 0)
-y_n2 = [constante * soma_0]
-       
-for w in range(1, len(t_n)):
-    soma_n = somatorio(M, w)
-    y2 = constante * soma_n
-    y_n2.append(y2)
+
+def filtragem(i):
+    x = x_n[i]
+    for k in range(1, M + 1):
+        x += x_n[i - k]
+        x += x_n[i + k] if (i+k) < len(t_n) else 0
+    return constante * x
+
+for j in range(0, len(t_n)):
+    y_n2[j] = filtragem(j)
+        
 
 # A)
 plt.subplot(2, 2, 1)
-plt.stem(n, x_n, basefmt=" ")
+plt.plot(n, x_n)
 plt.title('Função x[n]')
 plt.xlabel('n')
 plt.ylabel('x[n]')
 plt.grid(True)
 
 plt.subplot(2, 2, 2)
-plt.stem(n, y_n, basefmt=" ")
+plt.plot(n, y_n)
 plt.title('Função y[n]')
 plt.xlabel('n')
 plt.ylabel('y[n]')
@@ -65,7 +60,8 @@ plt.grid(True)
 # B)
 
 plt.subplot(2, 2, 3)
-plt.stem(n, y_n2, basefmt=" ")
+plt.plot(n, x_n, label='x[n]')
+plt.plot(n, y_n2, color='red', label='y[n]')
 plt.title('Função y2[n]')
 plt.xlabel('n')
 plt.ylabel('y2[n]')
