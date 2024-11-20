@@ -92,7 +92,7 @@ plt.ylabel('y2[n]')
 plt.grid(True)
 
 plt.subplot(2, 2, 4)
-plt.plot(m, erro_quadratico, label='Erro quadratico')
+plt.plot(m, erro_quadratico, label='Erro quadratico', marker='o')
 plt.title('Erro quadratico')
 plt.xlabel('M')
 plt.ylabel('EQM')
