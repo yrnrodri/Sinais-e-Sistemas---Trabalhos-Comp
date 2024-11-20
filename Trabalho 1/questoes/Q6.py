@@ -1,3 +1,4 @@
+# 6)
 # Considerando x[n] um sinal contendo as N amostras (n = {0, 1, ..., N − 1})
 # ruidosas de um sinal x(t) = f(t)u(t), onde
 
@@ -62,9 +63,6 @@ for M_i in m:
     erro = np.mean((f_t - Y) ** 2)
     erro_quadratico[M_i] = erro
     
-indice_minimo = np.argmin(erro_quadratico)
-print(indice_minimo) # Esse vai ser o melhor M
-
 
 # A)
 plt.subplot(2, 2, 1)
@@ -76,7 +74,7 @@ plt.grid(True)
 
 plt.subplot(2, 2, 2)
 plt.plot(n, y_n)
-plt.title('Função y[n]')
+plt.title('Sinal acumulado')
 plt.xlabel('n')
 plt.ylabel('y[n]')
 plt.grid(True)
@@ -86,17 +84,28 @@ plt.grid(True)
 plt.subplot(2, 2, 3)
 plt.plot(n, x_n, label='x[n]')
 plt.plot(n, y_n2, color='red', label='y[n]')
-plt.title('Função y2[n]')
+plt.title('Sinal filtrado')
 plt.xlabel('n')
-plt.ylabel('y2[n]')
+plt.ylabel('y[n]')
 plt.grid(True)
 
 plt.subplot(2, 2, 4)
-plt.plot(m, erro_quadratico, label='Erro quadratico', marker='o')
-plt.title('Erro quadratico')
+plt.scatter(m, erro_quadratico, color='blue', label='Erro Quadrático Médio')
+
+# Destacar o menor valor
+indice_minimo = np.argmin(erro_quadratico)
+M_minimo = m[indice_minimo]
+erro_minimo = erro_quadratico[indice_minimo]
+
+# Destacar o menor valor com um marcador especial
+plt.scatter(M_minimo, erro_minimo, color='red', label=f'Mínimo: M={M_minimo}, EQM={erro_minimo:.4f}')
+
+plt.title('Erro Quadrático Médio (EQM)')
 plt.xlabel('M')
 plt.ylabel('EQM')
+plt.legend()
 plt.grid(True)
+
 
 plt.tight_layout()
 plt.show()

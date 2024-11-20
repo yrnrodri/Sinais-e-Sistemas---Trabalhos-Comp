@@ -1,3 +1,4 @@
+# 4)
 # Duas funções importantes para o estudo de sinais é a função impulso unitário
 # e a função degrau unitário. E possível chegar de uma função na outra como visto em aula. 
 # Implemente a função degrau a partir da função impulso (soma acumulativa), e função impulso

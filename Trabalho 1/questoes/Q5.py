@@ -1,3 +1,4 @@
+# 5)
 # Uma imagem pode ser pensada como um sinal com duas variáveis independentes
 # que, ao invés de ser o tempo, são as dimensões (vertical e horizontal), ou seja, x[nV , nH].
 # Utilizando a imagem (image.jpeg) disponibilizada no SIGAA, faça:

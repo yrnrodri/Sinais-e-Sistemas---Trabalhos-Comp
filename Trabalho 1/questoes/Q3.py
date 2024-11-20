@@ -1,3 +1,4 @@
+# 3)
 # Mostre graficamente que o aumento da frequência ω0 em um sinal exponencial
 # complexo periódico x[n] = e^jω0n não necessariamente aumenta a oscilação. Explique o motivo.
 # Além disso, qual a frequência que faz o sinal oscilar mais rápido?

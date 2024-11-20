@@ -24,7 +24,7 @@ for i, P in enumerate(P_vals, 1):
     plt.stem(t_discreto, x_discreto, basefmt=" ")
     plt.plot(t_discreto, x_discreto, 'o', color='red')
     plt.title(f'Amostras por Período: P = {P}')
-    plt.xlabel('Tempo (s)')
+    plt.xlabel('Tempo (n)')
     plt.ylabel('Amplitude')
     plt.grid(True)
 
